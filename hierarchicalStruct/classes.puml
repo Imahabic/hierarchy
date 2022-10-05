@@ -1,0 +1,97 @@
+@startuml
+class com.projectsolution.hierarchicalstruct.SceneController {
++ ImageView save
++ ImageView saveImage
++ ImageView open
++ ImageView info
++ ImageView clear
++ ImageView scheme
++ ImageView deleter
++ AnchorPane pane
++ ToggleButton add
++ ToggleButton del
+~ HierarchyElement[] connectionBlocks
+~ HierarchyElementsList listElements
++ void initialize(URL,ResourceBundle)
+- void drawElement(HierarchyElement)
+- void addElement(MouseEvent)
+- void updateConnections()
+- void addTransition(HierarchyElement,HierarchyElement)
+- void showHelpMessage()
+- void exportIntoHSD()
+- void exportIntoPNG()
+- void importFromHSD()
+- void removeAllElements()
+}
+class com.projectsolution.hierarchicalstruct.HierarchyElement {
+- String Text
+~ TextArea editableText
+~ Label visibleText
+- double Y
+~ double width
+- double mouseAnchorX
+- TextObserver observer
++ void setObserver(TextObserver)
++ void notifyObservers()
++ void updatePosition(double,double)
++ void setMouseAnchorX(double)
++ void setMouseAnchorY(double)
++ double getMouseAnchorX()
++ double getMouseAnchorY()
++ void setX(double)
++ void setY(double)
++ void draw(boolean)
++ double maxY()
++ double maxX()
++ ArrayList<Point2D> getArrayOfMinMaxPointsTop()
++ ArrayList<Point2D> getArrayOfMinMaxPointsBottom()
++ HierarchyElement copy()
++ boolean equals(HierarchyElement)
+}
+class com.projectsolution.hierarchicalstruct.FileAdapter {
++ {static} void exportIntoHSD(HierarchyElementsList)
++ {static} void exportIntoPNG(WritableImage)
++ {static} HierarchyElementsList importFromHSD()
+}
+class com.projectsolution.hierarchicalstruct.HelloApplication {
++ void start(Stage)
++ {static} void main(String[])
+}
+interface com.projectsolution.hierarchicalstruct.TextEdit {
+~ void onEdit()
+}
+class com.projectsolution.hierarchicalstruct.ConnectPoint {
++ X item1
++ Y item2
+}
+class com.projectsolution.hierarchicalstruct.HierarchyElementsList {
+- ArrayList<HierarchyElement> arrayList
+- ArrayList<Connection> connections
++ HierarchyElement add(String,double,double)
++ HierarchyElement add(HierarchyElement)
++ void delete(HierarchyElement)
++ ArrayList<HierarchyElement> getAll()
++ Connection createConnection(HierarchyElement,HierarchyElement)
++ void deleteConnection(Connection)
++ ArrayList<Connection> getAllConnections()
++ void removeAll()
+}
+class com.projectsolution.hierarchicalstruct.TextObserver {
+~ TextEdit update
++ void update()
+}
+class com.projectsolution.hierarchicalstruct.Connection {
+~ HierarchyElement top
+~ HierarchyElement bottom
++ {static} ConnectPoint<Point2D,Point2D> getPointsOfConnection(HierarchyElement,HierarchyElement)
+}
+
+
+javafx.fxml.Initializable <|.. com.projectsolution.hierarchicalstruct.SceneController
+java.io.Serializable <|.. com.projectsolution.hierarchicalstruct.HierarchyElement
+javafx.scene.Group <|-- com.projectsolution.hierarchicalstruct.HierarchyElement
+javafx.application.Application <|-- com.projectsolution.hierarchicalstruct.HelloApplication
+java.io.Serializable <|.. com.projectsolution.hierarchicalstruct.HierarchyElementsList
+java.io.Serializable <|.. com.projectsolution.hierarchicalstruct.Connection
+javafx.scene.Group <|-- com.projectsolution.hierarchicalstruct.Connection
+@enduml

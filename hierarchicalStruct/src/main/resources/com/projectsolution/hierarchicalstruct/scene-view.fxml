@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projectsolution.hierarchicalstruct.SceneController">
+   <center>
+       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="309.0" prefWidth="599.0" />
+       </ScrollPane>
+   </center>
+   <top>
+       <VBox prefHeight="77.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+           <ToolBar prefHeight="34.0" prefWidth="600.0">
+               <Button mnemonicParsing="false" onAction="#exportIntoHSD">
+                   <graphic>
+                       <ImageView fx:id="save" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" />
+                   </graphic>
+                   <tooltip>
+                       <Tooltip text="Сохранить в формате файла" />
+                   </tooltip>
+               </Button>
+               <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#exportIntoPNG">
+                   <graphic>
+                       <ImageView fx:id="saveImage" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" />
+                   </graphic>
+                   <tooltip>
+                       <Tooltip text="Сохранить в формате .png" />
+                   </tooltip>
+               </Button>
+               <Button layoutX="58.0" layoutY="10.0" mnemonicParsing="false" onAction="#importFromHSD">
+                   <graphic>
+                       <ImageView fx:id="open" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" />
+                   </graphic>
+                   <tooltip>
+                       <Tooltip text="Экспорт иерархии" />
+                   </tooltip>
+               </Button>
+               <Separator orientation="VERTICAL" prefHeight="14.0" prefWidth="7.0" />
+               <Button layoutX="58.0" layoutY="10.0" mnemonicParsing="false" onAction="#removeAllElements">
+                   <graphic>
+                       <ImageView fx:id="clear" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" />
+                   </graphic>
+                   <tooltip>
+                       <Tooltip text="Удалить иерархию" />
+                   </tooltip>
+               </Button>
+               <Separator layoutX="154.0" layoutY="10.0" orientation="VERTICAL" prefHeight="14.0" prefWidth="7.0" />
+               <Button layoutX="165.0" layoutY="10.0" mnemonicParsing="false" onAction="#showHelpMessage">
+                   <graphic>
+                       <ImageView fx:id="info" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" />
+                   </graphic>
+                   <tooltip>
+                       <Tooltip text="Справочная информация" />
+                   </tooltip>
+               </Button>
+           </ToolBar>
+           <ToolBar prefHeight="53.0" prefWidth="537.0">
+               <ToggleButton fx:id="add" mnemonicParsing="false">
+                   <tooltip>
+                       <Tooltip text="Добавить элемент иерархии" />
+                   </tooltip>
+                   <graphic>
+                       <ImageView fx:id="scheme" fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" />
+                   </graphic>
+               <toggleGroup>
+                  <ToggleGroup fx:id="tools" />
+               </toggleGroup>
+               </ToggleButton>
+            <ToggleButton fx:id="del" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" toggleGroup="$tools">
+               <tooltip>
+                  <Tooltip text="Добавить элемент иерархии" />
+               </tooltip>
+               <graphic>
+                  <ImageView fx:id="deleter" fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+                <tooltip>
+                    <Tooltip text="Удалить элемент иерархии" />
+                </tooltip>
+            </ToggleButton>
+           </ToolBar>
+       </VBox>
+   </top>
+</BorderPane>
