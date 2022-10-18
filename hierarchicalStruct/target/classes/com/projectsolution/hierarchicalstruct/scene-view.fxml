@@ -82,4 +82,7 @@
            </ToolBar>
        </VBox>
    </top>
+   <left>
+      <TreeView fx:id="hierarchyTree" prefHeight="309.0" prefWidth="142.0" BorderPane.alignment="CENTER" />
+   </left>
 </BorderPane>

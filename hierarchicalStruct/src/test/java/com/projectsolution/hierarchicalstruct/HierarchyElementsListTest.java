@@ -13,7 +13,7 @@ class HierarchyElementsListTest {
     void add() {
         new JFXPanel();
         HierarchyElementsList list = new HierarchyElementsList();
-        HierarchyElement element=list.add("ds",3,5);
+        Task element=list.add("ds",3,5);
         Assert.assertEquals(list.getAll().get(0),element);
     }
 
@@ -21,7 +21,7 @@ class HierarchyElementsListTest {
     void deleteConnection() {
         new JFXPanel();
         HierarchyElementsList list = new HierarchyElementsList();
-        Connection connection = list.createConnection(new HierarchyElement("",4,4),new HierarchyElement("d",4,5));
+        Connection connection = list.createConnection(new Task.TaskBuilder("",4,4).build(),new Task.TaskBuilder("d",4,5).build());
         Assert.assertEquals(list.getAllConnections().size(),1);
         list.deleteConnection(connection);
         Assert.assertEquals(list.getAllConnections().size(),0);
@@ -33,7 +33,7 @@ class HierarchyElementsListTest {
         HierarchyElementsList list = new HierarchyElementsList();
         list.add("ds",3,5);
         list.add("ds",3,5);
-        list.createConnection(new HierarchyElement("",4,4),new HierarchyElement("d",4,5));
+        list.createConnection(new Task.TaskBuilder("",4,4).build(),new Task.TaskBuilder("d",4,5).build());
         Assert.assertEquals(list.getAllConnections().size(),1);
         Assert.assertEquals(list.getAll().size(),2);
         list.removeAll();

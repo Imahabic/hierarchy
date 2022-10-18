@@ -10,11 +10,11 @@ public class HierarchyElementsList implements Serializable {
     /**
      * list of blocks
      */
-    private final ArrayList<HierarchyElement> arrayList = new ArrayList<>();
+    private final ArrayList<Task> arrayList = new ArrayList<>();
     /**
      * list of connections
      */
-    private final ArrayList<Connection> connections = new ArrayList<Connection>();
+    private final ArrayList<Connection> connections = new ArrayList<>();
 
     /**
      * @param text on block
@@ -22,9 +22,9 @@ public class HierarchyElementsList implements Serializable {
      * @param y on pane
      * @return new block
      */
-    public HierarchyElement add(String text, double x, double y)
+    public Task add(String text, double x, double y)
     {
-        HierarchyElement element = new HierarchyElement(text,x,y);
+        Task element = new Task.TaskBuilder(text,x,y).build();
         arrayList.add(element);
         return element;
     }
@@ -33,7 +33,7 @@ public class HierarchyElementsList implements Serializable {
      * @param element for adding
      * @return new block
      */
-    public HierarchyElement add(HierarchyElement element)
+    public Task add(Task element)
     {
         arrayList.add(element);
         return element;
@@ -42,7 +42,7 @@ public class HierarchyElementsList implements Serializable {
     /**
      * @param element foe deleting
      */
-    public void delete(HierarchyElement element)
+    public void delete(Task element)
     {
         arrayList.remove(element);
     }
@@ -50,7 +50,7 @@ public class HierarchyElementsList implements Serializable {
     /**
      * @return list of blocks
      */
-    public ArrayList<HierarchyElement> getAll()
+    public ArrayList<Task> getAll()
     {
         return arrayList;
     }
@@ -60,7 +60,7 @@ public class HierarchyElementsList implements Serializable {
      * @param bottom block
      * @return new connection
      */
-    public Connection createConnection(HierarchyElement top, HierarchyElement bottom)
+    public Connection createConnection(Task top, Task bottom)
     {
         Connection connection = new Connection(top,bottom);
         connections.add(connection);
@@ -69,13 +69,16 @@ public class HierarchyElementsList implements Serializable {
 
     /**
      * @param connection for deleting
-     * @param connection for deleting
      */
     public void deleteConnection(Connection connection)
     {
         connections.remove(connection);
     }
-
+    public void deleteChild(Task elem)
+    {
+        for(Task task:arrayList)
+            task.childrenTasks.remove(elem);
+    }
     /**
      * @return all connections
      */

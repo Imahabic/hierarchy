@@ -14,17 +14,17 @@ public class Connection extends Group implements Serializable {
     /**
      * top element
      */
-    HierarchyElement top;
+    Task top;
     /**
      * bottom element
      */
-    HierarchyElement bottom;
+    Task bottom;
 
     /**
      * @param top element
      * @param bottom element
      */
-    public Connection(HierarchyElement top, HierarchyElement bottom)
+    public Connection(Task top, Task bottom)
     {
         super(new Line(getPointsOfConnection(top, bottom).item1.getX(),
                 getPointsOfConnection(top, bottom).item1.getY(),
@@ -43,7 +43,7 @@ public class Connection extends Group implements Serializable {
      * @param child element
      * @return list of points
      */
-    public static ConnectPoint<Point2D, Point2D> getPointsOfConnection(HierarchyElement parent, HierarchyElement child) {
+    public static ConnectPoint<Point2D, Point2D> getPointsOfConnection(Task parent, Task child) {
         var fromPoints = parent.getArrayOfMinMaxPointsTop();
         var toPoints = child.getArrayOfMinMaxPointsBottom();
         Point2D pointFromFinal = Point2D.ZERO;
